@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>I Love You Baby</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            animation: backgroundChange 1s infinite alternate; /* Blinking background color */
+        }
+
+        /* Background with Christmas Light Effect */
+        @keyframes backgroundChange {
+            0% { background-color: #ff4f58; } /* Red */
+            100% { background-color: #228b22; } /* Green */
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #c92c2c; /* Christmas red */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            border-bottom: 5px solid #228b22; /* Green for Christmas */
+            background-image: url('https://www.transparenttextures.com/patterns/pw-maze-white.png');
+            background-size: 20px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Dancing Script', cursive; /* Christmas font for header */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin: 5px 0 0;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Notepad Styles */
+        .notepad {
+            width: 100%;
+            height: 400px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-family: 'Patrick Hand', cursive; /* Handwritten font for note section */
+            outline: none;
+            resize: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-image: url('https://www.transparenttextures.com/patterns/white-linen.png');
+        }
+
+        .notepad:focus {
+            border-color: #228b22; /* Green for focus */
+        }
+
+        /* Button Styles */
+        .button {
+            background-color: #228b22; /* Green button */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #555;
+            font-style: italic;
+            padding: 10px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Christmas Tree Icon Styles */
+        .tree-icon {
+            font-size: 3rem;
+            color: #228b22;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .notepad {
+                height: 300px;
+            }
+
+            .button {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Audio Player for Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="jingle_bell_rock.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="header">
+        <h1>I Love You Tia</h1>
+        <p>A special Christmas note just for you</p>
+    </div>
+
+    <div class="container">
+        <!-- Christmas Tree Icon -->
+        <div class="tree-icon">🎄</div>
+
+        <textarea class="notepad" id="notepad" placeholder="Write your sweet notes here..."></textarea>
+
+        <button class="button" onclick="saveNote()">Save Note</button>
+        <p id="saveStatus" style="color: green;"></p>
+    </div>
+
+    <div class="footer">
+        <p>Made with love for you this Christmas ❤️</p>
+    </div>
+
+    <script>
+        function saveNote() {
+            const noteContent = document.getElementById('notepad').value;
+            if (noteContent) {
+                const blob = new Blob([noteContent], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'note.txt';
+                link.click();
+                document.getElementById('saveStatus').textContent = 'Your note has been saved!';
+            } else {
+                document.getElementById('saveStatus').textContent = 'Please write something to save!';
+            }
+        }
+    </script>
+</body>
+</html>
+
+            
